@@ -1,0 +1,51 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#drawer {
+  background-color: #111;
+  position: absolute;
+  inset: 0 0 auto 0;
+  padding: 1rem;
+  transition: transform 0.25s;
+  transform: translateY(0%);
+}
+
+#drawer.tucked {
+  transform: translateY(-100%);
+}
+
+
+#tuckBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 16px;
+  background-color: transparent;
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s;
+  transform: rotate(0);
+}
+
+#tuckBtn.tucked {
+  transform: rotate(180deg);
+}
+
+
+
+.mt-4 {
+  margin-top: 1rem;
+}

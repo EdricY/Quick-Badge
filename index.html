@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Badge</title>
+</head>
+
+<body>
+  <div id="drawer" class="tucked">
+    <label class="mt-4">
+      <div>
+        Select Image:
+      </div>
+      <input type="file" accept="image/*" id="fileInput">
+    </label>
+    <div class="mt-4">
+      <button id="nowBtn">Send me a Notification</button>
+    </div>
+  </div>
+  <button id="tuckBtn" class="tucked">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="24"
+      height="24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+    </svg>
+  </button>
+
+  <img id="mainImg" />
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
