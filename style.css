@@ -13,18 +13,35 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 #drawer {
+  font-size: 1.25rem;
   background-color: #111;
   position: absolute;
   inset: 0 0 auto 0;
-  padding: 1rem;
+  padding: 1.5rem;
   transition: transform 0.25s;
-  transform: translateY(0%);
+  transform-origin: top;
+  transform: translateY(0);
 }
 
 #drawer.tucked {
   transform: translateY(-100%);
 }
+
+#drawer input,
+#drawer button {
+  font-size: 1.25rem;
+}
+
 
 
 #tuckBtn {
@@ -42,6 +59,24 @@
 
 #tuckBtn.tucked {
   transform: rotate(180deg);
+}
+
+#mainWrap {
+  width: 100%;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+#noneMsg {
+  text-align: center;
+}
+
+#mainImg {
+  width: 100%;
+  position: absolute;
+  inset: 0;
 }
 
 

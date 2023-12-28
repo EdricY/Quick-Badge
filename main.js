@@ -6,9 +6,14 @@ const fileInput = document.getElementById("fileInput");
 const tuckBtn = document.getElementById("tuckBtn");
 const nowBtn = document.getElementById("nowBtn");
 const mainImg = document.getElementById("mainImg");
+const noneMsg = document.getElementById("noneMsg");
+const startBtn = document.getElementById("startBtn");
 
 const storedImg = localStorage.getItem("imgSrc")
-if (storedImg) mainImg.src = storedImg;
+if (storedImg) {
+  noneMsg.style.display = "none";
+  mainImg.src = storedImg;
+}
 
 
 tuckBtn.addEventListener("click", () => {
@@ -16,12 +21,17 @@ tuckBtn.addEventListener("click", () => {
   drawer.classList.toggle("tucked");
 })
 
+startBtn.addEventListener("click", () => {
+  tuckBtn.classList.toggle("tucked");
+  drawer.classList.toggle("tucked");
+})
+
+
 
 nowBtn.addEventListener("click", () => {
   Notification.requestPermission().then((permission) => {
-    if (permission === "granted") {
-      const notification = new Notification("See My Badge", { body: "Click to see my badge", icon: mainImg });
-    }
+    const notification = new Notification("See My Badge", { body: "Click to see my badge", icon: mainImg });
+    // if (permission === "granted") {}
   });
 })
 
