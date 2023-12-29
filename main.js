@@ -62,22 +62,16 @@ function notify() {
 
 fileInput.addEventListener("change", e => {
   const file = fileInput.files[0]
-  mainImg.src = URL.createObjectURL(file);
-  mainImg.addEventListener("load", () => {
-    localStorage.setItem("imgSrc", getBase64Image(mainImg))
-  }, { once: true })
+  // mainImg.src = URL.createObjectURL(file);
+
+  if (!file) return;
+  let reader = new FileReader();
+  reader.onload = function (e) {
+    const data = e.target.result;
+    mainImg.src = data;
+    mainImg.onload = () => {
+      localStorage.setItem("imgSrc", data);
+    }
+  }
+  reader.readAsDataURL(file);
 })
-
-
-function getBase64Image(img) {
-  let canvas = document.createElement("canvas");
-  canvas.width = img.width;
-  canvas.height = img.height;
-
-  let ctx = canvas.getContext("2d");
-  ctx.drawImage(img, 0, 0);
-
-  let dataURL = canvas.toDataURL("image/png");
-  return dataURL;
-  // return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
