@@ -6,9 +6,10 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [
     VitePWA({
-      devOptions: {
-        enabled: true
-      },
+      registerType: 'autoUpdate',
+      // devOptions: {
+      //   enabled: true
+      // },
       includeAssets: ['favicon.ico', 'icon-530.png'],
       manifest: {
         "short_name": "Quick Badge",
