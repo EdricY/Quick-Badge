@@ -1,3 +1,4 @@
+// https://vite-pwa-org.netlify.app/workbox/inject-manifest.html#network-first-strategy
 import { cacheNames, clientsClaim } from 'workbox-core'
 import { registerRoute, setCatchHandler, setDefaultHandler } from 'workbox-routing'
 import {
