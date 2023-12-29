@@ -1,6 +1,5 @@
 import './style.css'
 
-
 const drawer = document.getElementById("drawer");
 const fileInput = document.getElementById("fileInput");
 const tuckBtn = document.getElementById("tuckBtn");
@@ -28,36 +27,44 @@ startBtn.addEventListener("click", () => {
 
 
 
-nowBtn.addEventListener("click", () => {
+nowBtn.addEventListener("click", async () => {
+  const regs = await navigator.serviceWorker.getRegistrations();
+  const reg = regs[0]
+
   if (!("Notification" in window)) {
-    // Check if the browser supports notifications
     alert("This browser does not support desktop notification");
   } else if (Notification.permission === "granted") {
     // Check whether notification permissions have already been granted;
     // if so, create a notification
-    const notification = notify();
+    notify(reg);
   } else if (Notification.permission !== "denied") {
     // We need to ask the user for permission
     Notification.requestPermission().then((permission) => {
       // If the user accepts, let's create a notification
       if (permission === "granted") {
-        const notification = notify();
+        notify(reg);
       }
     });
   }
 })
 
-function notify() {
-  const notification = new Notification(
-    "See My Badge",
-    {
-      body: "Click to see my badge",
-      requireInteraction: true,
-      renotify: true,
-      tag: "badge"
-    });
+function notify(reg) {
+  reg?.showNotification("See My Badge", {
+    body: "Click to see my badge",
+    // requireInteraction: true,
+    // renotify: true,
+    // tag: "badge"
+  });
+  // const notification = new Notification(
+  //   "See My Badge",
+  //   {
+  //     body: "Click to see my badge",
+  //     // requireInteraction: true,
+  //     // renotify: true,
+  //     // tag: "badge"
+  //   });
 
-  return notification
+  // return notification
 }
 
 fileInput.addEventListener("change", e => {
