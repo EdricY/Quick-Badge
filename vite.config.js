@@ -6,11 +6,19 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [
     VitePWA({
+      // minify: false,
       registerType: 'autoUpdate',
-      // devOptions: {
-      //   enabled: true
-      // },
-      includeAssets: ['favicon.ico', 'icon-530.png'],
+      includeAssets: ['favicon.ico', 'icon-530.png', 'index.html'],
+
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.js',
+
+      devOptions: {
+        enabled: true,
+        type: "module"
+      },
+
       manifest: {
         "short_name": "Quick Badge",
         "name": "Quick Badge",
