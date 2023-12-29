@@ -29,17 +29,41 @@ startBtn.addEventListener("click", () => {
 
 
 nowBtn.addEventListener("click", () => {
-  Notification.requestPermission().then((permission) => {
-    const notification = new Notification("See My Badge", { body: "Click to see my badge", icon: mainImg });
-    // if (permission === "granted") {}
-  });
+  if (!("Notification" in window)) {
+    // Check if the browser supports notifications
+    alert("This browser does not support desktop notification");
+  } else if (Notification.permission === "granted") {
+    // Check whether notification permissions have already been granted;
+    // if so, create a notification
+    const notification = notify();
+  } else if (Notification.permission !== "denied") {
+    // We need to ask the user for permission
+    Notification.requestPermission().then((permission) => {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        const notification = notify();
+      }
+    });
+  }
 })
+
+function notify() {
+  const notification = new Notification(
+    "See My Badge",
+    {
+      body: "Click to see my badge",
+      requireInteraction: true,
+      renotify: true,
+      tag: "badge"
+    });
+
+  return notification
+}
 
 fileInput.addEventListener("change", e => {
   const file = fileInput.files[0]
   mainImg.src = URL.createObjectURL(file);
   mainImg.addEventListener("load", () => {
-
     localStorage.setItem("imgSrc", getBase64Image(mainImg))
   }, { once: true })
 })
