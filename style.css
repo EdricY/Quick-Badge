@@ -62,6 +62,12 @@ body {
   mix-blend-mode: difference;
 }
 
+#noneMsg {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
 #tuckBtn.tucked {
   transform: rotate(0);
 }

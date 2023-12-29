@@ -71,6 +71,7 @@ fileInput.addEventListener("change", e => {
     mainImg.src = data;
     mainImg.onload = () => {
       localStorage.setItem("imgSrc", data);
+      noneMsg.style.display = "none";
     }
   }
   reader.readAsDataURL(file);
