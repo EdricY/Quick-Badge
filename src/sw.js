@@ -129,8 +129,8 @@ clientsClaim()
 
 
 self.addEventListener('notificationclick', function (event) {
-  const clickedNotification = event.notification;
-  clickedNotification.close();
+  // const clickedNotification = event.notification;
+  // clickedNotification.close();
 
   const urlToOpen = new URL("/", self.location.origin).href;
 
