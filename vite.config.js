@@ -37,6 +37,7 @@ export default defineConfig({
         "start_url": ".",
         "display": "standalone",
         "theme_color": "#ffffff",
+        "orientation": "portrait",
         "background_color": "#242424"
       },
     })
